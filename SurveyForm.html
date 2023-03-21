@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ascent Academy Survey Form</title>
+    <style>
+      /* Header Styles */
+      header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+      h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Main Content Styles */
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Survey Form Styles */
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  input[type="submit"] {
+    background-color: #333;
+    color: #09fa9d;
+    cursor: pointer;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #333;
+    color: #3e0bf3;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+  }
+  
+  /* Validation Styles */
+  .error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  body{
+    background-color: aqua;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div id="a">
+    <img src="Ascent Academies.jpg" alt="My Logo">
+</div>
+<div id="b">
+    <h1>Ascent Academy Survey Form</h1>
+    <p>Please provide us with your valuable feedback</p>
+</div>
+  </header>
+  <main>
+    <form id="surveyForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <div class="error" id="nameError"></div>
+      
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="18" max="100" required>
+      <div class="error" id="ageError"></div>
+      
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <div class="error" id="genderError"></div>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <div class="error" id="emailError"></div>
+      
+      <label for="contactDetails">Details of Contact:</label>
+      <textarea id="contactDetails" name="contactDetails" rows="5" required></textarea>
+      <div class="error" id="contactDetailsError"></div>
+      
+      <input type="submit" value="Submit">
+    </form>
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 Ascent Academy. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    const form = document.getElementById('surveyForm');
+    const name = document.getElementById('name');
+    const age = document.getElementById('age');
+    const gender = document.getElementById('gender');
+    const email = document.getElementById('email');
+const contactDetails = document.getElementById('contactDetails');
+const nameError = document.getElementById('nameError');
+const ageError = document.getElementById('ageError');
+const genderError = document.getElementById('genderError');
+const emailError = document.getElementById('emailError');
+const contactDetailsError = document.getElementById('contactDetailsError');
+
+form.addEventListener('submit', function(event) {
+event.preventDefault();
+validateForm();
+});
+
+function validateForm() {
+if (name.value.trim() === '') {
+nameError.textContent = 'Name is required';
+} else {
+nameError.textContent = '';
+}
+if (age.value < 18 || age.value > 100) {
+  ageError.textContent = 'Age must be between 18 and 100';
+} else {
+  ageError.textContent = '';
+}
+
+if (gender.value === '') {
+  genderError.textContent = 'Gender is required';
+} else {
+  genderError.textContent = '';
+}
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email.value)) {
+  emailError.textContent = 'Please enter a valid email address';
+} else {
+  emailError.textContent = '';
+}
+
+if (contactDetails.value.trim() === '') {
+  contactDetailsError.textContent = 'Details of Contact are required';
+} else {
+  contactDetailsError.textContent = '';
+}
+}
+</script>
+</body>
+</html>
+  
